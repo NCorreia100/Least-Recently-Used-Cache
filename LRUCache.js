@@ -35,7 +35,6 @@ var Node = function (index, key, value) {
 
 //method to recursively lookup a node O(N/2)
 LRUCache.prototype.seekNodeBothWays = function (index, curHead = this.linkedList.head, curTail = this.linkedList.tail) {
-    console.log(index)
     if (curHead.index === index) return curHead;
     if (curTail.index === index) return curTail;
     return seekNodeBothWays(index, curHead.next, curTail.previous);
@@ -92,7 +91,7 @@ LRUCache.prototype.set = function (key, val) {
             let keyToRemove = Object.keys(this.linkedList.tail.data)[0];
             delete this.hashTable[keyToRemove];
             this.linkedList.tail = this.linkedList.tail.previous;
-        }else{
+        } else {
             this.size++;
         }
         //append new node to the front of the linked list O(1)
